@@ -71,21 +71,15 @@ export const fetchItems = item => async (dispatch) => {
 
   dispatch(fetchItemsRequest());
 
-  try {
-    const response = await fetch(`${paths.items}?${item}`, {
+  await fetch(`${paths.items}?${item}`, {
       mode: 'cors',
-    });
+    })
+    .then((resp) => resp.json())
+    .then((data) => dispatch(fetchItemsSuccess(data)))
+    .catch((e) => {
+      dispatch(fetchItemsRefuse(e.message));
+    })
 
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const data = await response.json();
-
-    dispatch(fetchItemsSuccess(data));
-  } catch (error) {
-    dispatch(fetchItemsRefuse(error.message));
-  }
 };
 
 
@@ -110,21 +104,14 @@ export const fetchCategoriesSuccess = categories => ({
 export const fetchCategories = () => async (dispatch) => {
   dispatch(fetchCategoriesRequest());
 
-  try {
-    const response = await fetch(paths.categories, {
+  await fetch(paths.categories, {
       mode: 'cors',
-    });
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const data = await response.json();
-
-    dispatch(fetchCategoriesSuccess(data));
-  } catch (error) {
-    dispatch(fetchCategoriesRefuse(error.message));
-  }
+    })
+    .then((resp) => resp.json())
+    .then((data) => dispatch(fetchCategoriesSuccess(data)))
+    .catch((e) => {
+      dispatch(fetchCategoriesRefuse(e.message));
+    })
 };
 
 
