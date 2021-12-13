@@ -221,7 +221,7 @@ export const getCartItemsSuccess = cartItems => ({
   },
 });
 
-export const changeFormField = (name, value) => ({
+export const changeFormInput = (name, value) => ({
   type: CHANGE_FORM_INPUT,
   payload: {
     name,

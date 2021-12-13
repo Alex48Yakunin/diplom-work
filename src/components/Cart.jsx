@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {getCartItems, changeFormField, fetchOrder,} from "../actions/actionCreators";
+import {getCartItems, changeFormInput, fetchOrder,} from "../actions/actionCreators";
 
 export default function Cart() {
   const { cartItems, totalSum, loading, error, success } = useSelector(
@@ -20,7 +20,7 @@ export default function Cart() {
 
   const handleChange = (evt) => {
     const { id, value } = evt.target;
-    dispatch(changeFormField(id, value));
+    dispatch(changeFormInput(id, value));
   };
   
   const dispatch = useDispatch();
