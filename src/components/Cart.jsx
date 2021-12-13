@@ -8,8 +8,8 @@ export default function Cart() {
     (state) => state.cart
   );
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch(fetchOrder());
   };
 
@@ -18,8 +18,8 @@ export default function Cart() {
     dispatch(getCartItems());
   };
 
-  const handleChange = (evt) => {
-    const { id, value } = evt.target;
+  const handleChange = (e) => {
+    const { id, value } = e.target;
     dispatch(changeFormInput(id, value));
   };
   
@@ -66,21 +66,21 @@ export default function Cart() {
           </thead>
           <tbody>
             {cartItems &&
-              cartItems.map((o, index) => (
+              cartItems.map((td, index) => (
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>
                   <td>
-                    <Link to={o.link}>{o.title}</Link>
+                    <Link to={td.link}>{td.title}</Link>
                   </td>
-                  <td>{o.size}</td>
-                  <td>{o.quantity}</td>
-                  <td>{`${o.price} руб.`}</td>
-                  <td>{`${o.price * o.quantity} руб.`}</td>
+                  <td>{td.size}</td>
+                  <td>{td.quantity}</td>
+                  <td>{`${td.price} руб.`}</td>
+                  <td>{`${td.price * td.quantity} руб.`}</td>
                   <td>
                     <button
                       className="btn btn-outline-danger btn-sm"
                       onClick={() => {
-                        handleRemove(o.name)}}>
+                        handleRemove(td.name)}}>
                       Удалить
                     </button>
                   </td>
