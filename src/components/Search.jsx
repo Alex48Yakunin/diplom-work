@@ -12,6 +12,6 @@ export default function Search({handleChange, handleSubmit, searchText, classNam
 Search.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  searchString: PropTypes.string,
+  searchText: PropTypes.string,
   className: PropTypes.string,
 }
