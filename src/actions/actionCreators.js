@@ -144,10 +144,10 @@ export const fetchMore = item => async (dispatch) => {
 };
 
 
-export const changeSearchInput = searchString => ({
+export const changeSearchInput = searchText => ({
   type: CHANGE_SEARCH_INPUT,
   payload: {
-    searchString,
+    searchText,
   },
 });
 

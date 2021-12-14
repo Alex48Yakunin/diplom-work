@@ -13,8 +13,8 @@ import {put, take, select} from 'redux-saga/effects'
 const initialState = {
   cartItems: null,
   totalSum: null,
-  loading: false,
   error: null,
+  loading: false,
   owner: {phone: '', address: ''},
   success: false
 }
@@ -68,14 +68,9 @@ export default function cartReducer(state = initialState, action) {
   }
 }
 
-
-
-// const cartSelector = state => state.cart
-
 export const fetchOrderSaga = function* () {
   while (true) {
     yield take(FETCH_ORDER_REQUEST)
-    //const {cartItems, owner} = yield select(cartSelector)
     const {cart : {cartItems, owner}} = yield select(state => state)
 
     const items = []

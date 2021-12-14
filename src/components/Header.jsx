@@ -6,14 +6,14 @@ import {useSelector, useDispatch} from "react-redux";
 import Search from "./Search";
 
 function Header({history}) {
-    const {isSearching, searchString} = useSelector((state) => state.search);
+    const {isSearching, searchText} = useSelector((state) => state.search);
     const {cartItems} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (searchString) {
-            history.replace(`/catalog?q=${searchString}`);
+        if (searchText) {
+            history.replace(`/catalog?q=${searchText}`);
             dispatch(setSearching());
         }
     };
@@ -74,7 +74,7 @@ function Header({history}) {
                                 {isSearching && (<Search
                                     handleChange={handleChange}
                                     handleSubmit={handleSubmit}
-                                    searchString={searchString}
+                                    searchText={searchText}
                                     className="header-controls-search-form form-inline"/>)}
                             </div>
                         </div>
