@@ -10,8 +10,8 @@ function Header({history}) {
     const {cartItems} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (searchString) {
             history.replace(`/catalog?q=${searchString}`);
             dispatch(setSearching());
@@ -22,8 +22,8 @@ function Header({history}) {
         dispatch(setSearching());
     };
 
-    const handleChange = (evt) => {
-        dispatch(changeSearchInput(evt.target.value));
+    const handleChange = (e) => {
+        dispatch(changeSearchInput(e.target.value));
     };
 
     return (

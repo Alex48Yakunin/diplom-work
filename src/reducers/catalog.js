@@ -139,7 +139,6 @@ export default function catalogReducer(state = initialState, action) {
 }
 
 export const fetchCategoriesSaga = function* () {
-  
   while(true) {
     yield take(FETCH_CATEGORIES_REQUEST)
     try {
@@ -168,7 +167,6 @@ export const fetchCategoriesSaga = function* () {
 }
 
 export const fetchItemsSaga = function* () {
-  debugger;
   while(true) {
     const {payload} = yield take(FETCH_ITEMS_REQUEST)
     try {

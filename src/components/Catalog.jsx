@@ -29,10 +29,10 @@ function Catalog({ location, history }) {
     
   }, []);
 
-  const handleClickCategory = (evt, id) => {
-    evt.preventDefault();
-    if (evt.target.classList.contains("active")) return;
-    if (evt.target.text === "Все") {
+  const handleClickCategory = (e, id) => {
+    e.preventDefault();
+    if (e.target.classList.contains("active")) return;
+    if (e.target.text === "Все") {
       params.delete("categoryId");
     } else {
       params.set("categoryId", id);
@@ -48,23 +48,23 @@ function Catalog({ location, history }) {
     dispatch(fetchMore(params));
   };
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     params.set("q", searchString);
     setUrl();
     dispatch(fetchItemsRequest(params));
   };
 
-  const handleChange = (evt) => {
-    dispatch(fetchItemsRequest(evt.target.value));
+  const handleChange = (e) => {
+    dispatch(fetchItemsRequest(e.target.value));
   };
 
   return (
     <>
       {location.pathname === "/catalog.html" && (
         <Search
-          handleChange={handleChange}
           handleSubmit={handleSubmit}
+          handleChange={handleChange}
           searchString={searchString}
           className="catalog-search-form form-inline"
         />
@@ -74,7 +74,7 @@ function Catalog({ location, history }) {
           <NavLink
             to="#"
             isActive={() => !params.has("categoryId")}
-            onClick={(evt) => handleClickCategory(evt)}
+            onClick={(e) => handleClickCategory(e)}
             className="nav-link"
             activeClassName="active"
           >
@@ -86,7 +86,7 @@ function Catalog({ location, history }) {
             <NavLink
               to="#"
               isActive={() => params.get("categoryId") == item.id}
-              onClick={(evt) => handleClickCategory(evt, item.id)}
+              onClick={(e) => handleClickCategory(e, item.id)}
               className="nav-link"
               activeClassName="active"
             >
