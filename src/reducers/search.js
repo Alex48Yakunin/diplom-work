@@ -4,17 +4,17 @@ import {
 } from '../actions/actionTypes'
 
 const initialState = {
-  searchString: '',
+  searchText: '',
   isSearching: false
 };
 
 export default function searchReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_SEARCH_INPUT:
-      const {searchString} = action.payload;
+      const {searchText} = action.payload;
       return {
         ...state,
-        searchString
+        searchText
       };
     case SEARCHING:
       return {

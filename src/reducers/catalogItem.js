@@ -13,11 +13,11 @@ import {put, take} from 'redux-saga/effects'
 
 const initialState = {
   item: null,
-  availableSizes: [],
-  loading: false,
-  error: null,
-  quantity: 1,
   size: null,
+  error: null,
+  availableSizes: [],
+  quantity: 1,
+  loading: false,
 }
 
 export default function catalogItemReducer(state = initialState, action) {

@@ -4,18 +4,19 @@ import {
   applyMiddleware,
   compose,
 } from 'redux';
-import topSalesReducer from '../reducers/topSales';
-import catalogReducer from '../reducers/catalog';
-import searchReducer from '../reducers/search';
-import catalogItemReducer from '../reducers/catalogItem';
-import cartReducer from '../reducers/cart';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga'
 import {all} from 'redux-saga/effects'
 import {fetchCategoriesSaga} from '../reducers/catalog'
-import {fetchTopSalesSaga} from '../reducers/topSales'
 import {fetchItemSaga} from '../reducers/catalogItem'
 import {fetchItemsSaga} from '../reducers/catalog'
+import topSalesReducer from '../reducers/topSales';
+import {fetchTopSalesSaga} from '../reducers/topSales'
+import catalogReducer from '../reducers/catalog';
+import searchReducer from '../reducers/search';
+import catalogItemReducer from '../reducers/catalogItem';
+import cartReducer from '../reducers/cart';
+
 
 
 
